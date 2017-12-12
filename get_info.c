@@ -96,7 +96,7 @@ t_list			*get_printable_info(t_list *info)
 	{
 		entry_info = (t_info *)last->content;
 		entry_pinfo = get_printable_info_entry(entry_info);
-		ft_lstpush(&pinfo, entry_pinfo, sizeof(t_pinfo));
+		ft_lstpushback(&pinfo, ft_lstnew(entry_pinfo, sizeof(t_pinfo)));
 		free(entry_pinfo);
 		last = last->next;
 	}

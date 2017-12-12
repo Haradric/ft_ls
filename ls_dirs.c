@@ -25,7 +25,7 @@ static void	ls_dir2(t_list **info, t_opt *conf)
 		ls_files_short(*info);
 	if (conf->rb == 1)
 		recursion(*info, conf);
-	ft_lstfree(info, freeinfo);
+	ft_lstfreelist(info, freeinfo);
 }
 
 void		ls_dir(t_info *directory, t_opt *conf)
@@ -48,7 +48,7 @@ void		ls_dir(t_info *directory, t_opt *conf)
 		if (conf->a == 0 && fdirent->d_name[0] == '.')
 			continue ;
 		entry = get_info(fdirent->d_name, path, conf, 1);
-		ft_lstpush(&info, entry, sizeof(t_info));
+		ft_lstpushback(&info, ft_lstnew(entry, sizeof(t_info)));
 		free(entry);
 	}
 	ls_dir2(&info, conf);
@@ -87,11 +87,11 @@ void		ls_dirs(t_list *dir, t_opt *conf, int multidir)
 	while (last)
 	{
 		entry = get_info(last->content, "", conf, 0);
-		ft_lstpush(&info, entry, sizeof(t_info));
+		ft_lstpushback(&info, ft_lstnew(entry, sizeof(t_info)));
 		free(entry);
 		last = last->next;
 	}
 	sort(&info, conf);
 	ls_dirs2(&info, conf, multidir);
-	ft_lstfree(&info, freeinfo);
+	ft_lstfreelist(&info, freeinfo);
 }

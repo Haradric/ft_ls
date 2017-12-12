@@ -21,9 +21,9 @@ t_list			*read_params(int argc, char **argv)
 	while (argc != 1 && argv[argc - 1][0] != '-')
 	{
 		content = argv[argc-- - 1];
-		ft_lstpush(&list, content, ft_strlen(content) + 1);
+		ft_lstpushback(&list, ft_lstnew(content, ft_strlen(content) + 1));
 	}
 	if (!list)
-		list = ft_lstnew(".", ft_strlen("."));
+		list = ft_lstnew(".", 2);
 	return (list);
 }

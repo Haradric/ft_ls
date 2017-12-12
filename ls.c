@@ -26,9 +26,9 @@ void	ls(t_list *path, t_opt *conf, int multidir)
 		if (is_dir(last->content, conf) == -1)
 			error(last->content, 0);
 		else if (is_dir(last->content, conf))
-			ft_lstpush(&dirs, last->content, last->content_size);
+			ft_lstpushback(&dirs, ft_lstnew(last->content, last->content_size));
 		else
-			ft_lstpush(&files, last->content, last->content_size);
+			ft_lstpushback(&files, ft_lstnew(last->content, last->content_size));
 		last = last->next;
 	}
 	if (files)
@@ -37,6 +37,6 @@ void	ls(t_list *path, t_opt *conf, int multidir)
 		write(1, "\n", 1);
 	if (dirs)
 		ls_dirs(dirs, conf, multidir);
-	ft_lstfree(&files, free);
-	ft_lstfree(&dirs, free);
+	ft_lstfreelist(&files, free);
+	ft_lstfreelist(&dirs, free);
 }

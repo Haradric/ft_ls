@@ -53,7 +53,7 @@ void		ls_files_long(t_list *info)
 		print_line(&table, entry);
 		last = last->next;
 	}
-	ft_lstfree(&pinfo, freepinfo);
+	ft_lstfreelist(&pinfo, freepinfo);
 }
 
 void		ls_files_short(t_list *files)
@@ -81,7 +81,7 @@ void		ls_files(t_list *file, t_opt *conf)
 	while (last)
 	{
 		entry = get_info(last->content, "", conf, 1);
-		ft_lstpush(&info, entry, sizeof(t_info));
+		ft_lstpushback(&info, ft_lstnew(entry, sizeof(t_info)));
 		free(entry);
 		last = last->next;
 	}
@@ -90,5 +90,5 @@ void		ls_files(t_list *file, t_opt *conf)
 		ls_files_long(info);
 	else
 		ls_files_short(info);
-	ft_lstfree(&info, freeinfo);
+	ft_lstfreelist(&info, freeinfo);
 }

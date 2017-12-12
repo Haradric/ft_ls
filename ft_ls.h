@@ -14,6 +14,7 @@
 # define FT_LS_H
 
 # include "./libft/libft.h"
+# include "./ft_printf/ft_printf.h"
 # include <unistd.h>
 # include <dirent.h>
 # include <stdlib.h>
