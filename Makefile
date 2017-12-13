@@ -11,7 +11,8 @@ SOURCE = main.c\
 		get_info3.c\
 		read_flags.c\
 		read_params.c\
-		sorting.c\
+		compare.c\
+		sort.c\
 		useful_things.c\
 		free.c\
 		recursion.c

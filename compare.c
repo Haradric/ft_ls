@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sorting.c                                          :+:      :+:    :+:   */
+/*   compare.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbraslav <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -71,27 +71,3 @@ int		cmp_size(void *a, void *b)
 		return (1);
 }
 
-void	sort(t_list **list, t_opt *flags)
-{
-	if (flags->t == 1)
-	{
-		if (flags->r == 1)
-			ft_lstrsort(list, cmp_time);
-		else
-			ft_lstsort(list, cmp_time);
-	}
-	else if (flags->sb == 1)
-	{
-		if (flags->r == 1)
-			ft_lstrsort(list, cmp_size);
-		else
-			ft_lstsort(list, cmp_size);
-	}
-	else
-	{
-		if (flags->r == 1)
-			ft_lstrsort(list, cmp_name);
-		else
-			ft_lstsort(list, cmp_name);
-	}
-}

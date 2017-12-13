@@ -18,7 +18,6 @@ int		main(int argc, char **argv)
 	t_list	*arg;
 	int		multidir;
 
-	sleep(1);
 	config = read_options(argc, argv);
 	arg = read_params(argc, argv);
 	multidir = (arg->next != NULL) ? 1 : 0;

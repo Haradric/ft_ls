@@ -110,4 +110,11 @@ int					is_dir(char *path, t_opt *conf);
 long long			get_total(t_list *list);
 void				recursion(t_list *info, t_opt *conf);
 
+int					cmp_name(void *a, void *b);
+int					cmp_time(void *a, void *b);
+int					cmp_size(void *a, void *b);
+
+void				lstsort(t_list **list, int (*cmp)(void *a, void *b));
+void				lstrsort(t_list **list, int (*cmp)(void *a, void *b));
+
 #endif
